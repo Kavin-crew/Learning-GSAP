@@ -2,46 +2,44 @@
 
 import { navLinks } from "@/app/_constants/index";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Logo from "@/public/images/logo.webp";
 import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 
-function Navbar() {
-  useGSAP(() => {
-    const navTween = gsap.timeline({
-      scrollTrigger: {
-        trigger: "nav",
-        // when the bottom of the nav hits the top of the viewport
-        start: "bottom top",
-      },
-    });
+gsap.registerPlugin(ScrollTrigger);
 
-    navTween.fromTo(
+export default function Navbar() {
+  useGSAP(() => {
+    gsap.fromTo(
       "nav",
-      //   initial state
+      // Initial state
       {
         backgroundColor: "transparent",
+        backdropFilter: "blur(0px)",
       },
-      //   state when scrolled into view
+      // background color and blur on scroll
       {
         backgroundColor: "#00000050",
         backdropFilter: "blur(10px)",
         duration: 1,
         ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: "nav",
+          // start the animation when the bottom of the nav hits the top of the viewport
+          start: "bottom top",
+          toggleActions: "play none none reverse",
+        },
       },
     );
-  });
+  }, []);
 
   return (
     <nav>
       <div>
         <Link href="#home" className="flex items-center gap-2">
-          <Image
-            src="/images/logo.webp"
-            alt="Velvet Pour Logo"
-            width={32}
-            height={32}
-          />
+          <Image src={Logo} alt="Velvet Pour Logo" width={32} height={32} />
           <p>Velvet Pour</p>
         </Link>
 
@@ -56,5 +54,3 @@ function Navbar() {
     </nav>
   );
 }
-
-export default Navbar;
