@@ -1,14 +1,19 @@
 "use client";
 
-import Image from "next/image";
 import leftLeaf from "@/public/images/hero-left-leaf.webp";
 import rightLeaf from "@/public/images/hero-right-leaf.webp";
+import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
+import { useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 
 export default function Hero() {
+  const videoRef = useRef();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   useGSAP(() => {
     const heroSplit = new SplitText(".title", { type: "chars, words" });
     const subHeadingSplit = new SplitText(".sub-heading", { type: "lines" });
@@ -61,20 +66,49 @@ export default function Hero() {
       })
       .to(".right-leaf", { y: 200 }, 0)
       .to(".left-leaf", { y: -200 }, 0);
+
+    const startValue = isMobile ? "top 50%" : "center 60%";
+    const endValue = isMobile ? "120% top" : "bottom top";
+
+    let videoTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: "video",
+        start: startValue,
+        end: endValue,
+        scrub: true,
+        pin: true,
+      },
+    });
+
+    videoRef.current.onloadedmetadata = () => {
+      videoTimeline.to(videoRef.current, {
+        currentTime: videoRef.current.duration,
+      });
+    };
   }, []);
 
   return (
     <>
       <section id="hero" className="noisy">
         <h1 className="title uppercase">Mojito</h1>
-        <Image src={leftLeaf} alt="Left Leaf" className="left-leaf" />
-        <Image src={rightLeaf} alt="Right Leaf" className="right-leaf" />
+        <Image
+          src={leftLeaf}
+          alt="Left Leaf"
+          className="left-leaf"
+          loading="eager"
+        />
+        <Image
+          src={rightLeaf}
+          alt="Right Leaf"
+          className="right-leaf"
+          loading="eager"
+        />
 
         <div className="body">
           <div className="content">
             <div className="space-y-5 hidden md:block">
               <p className="sub-heading">Cool. Crisp. Classic.</p>
-              <p className="subtitle">
+              <p className="subtitle text-left">
                 Sip the Spirit <br /> of Summer
               </p>
             </div>
@@ -92,6 +126,16 @@ export default function Hero() {
           </div>
         </div>
       </section>
+
+      <div className="video absolute inset-0">
+        <video
+          ref={videoRef}
+          muted
+          playsInline
+          preload="auto"
+          src="/videos/output.mp4"
+        />
+      </div>
     </>
   );
 }
