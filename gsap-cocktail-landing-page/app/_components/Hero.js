@@ -9,6 +9,9 @@ import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
 import { useRef } from "react";
 import { useMediaQuery } from "react-responsive";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function Hero() {
   const videoRef = useRef();
@@ -70,9 +73,10 @@ export default function Hero() {
     const startValue = isMobile ? "top 50%" : "center 60%";
     const endValue = isMobile ? "120% top" : "bottom top";
 
-    let videoTimeline = gsap.timeline({
+    const video = videoRef.current;
+    const videoTimeline = gsap.timeline({
       scrollTrigger: {
-        trigger: "video",
+        trigger: video,
         start: startValue,
         end: endValue,
         scrub: true,
@@ -80,11 +84,22 @@ export default function Hero() {
       },
     });
 
-    videoRef.current.onloadedmetadata = () => {
-      videoTimeline.to(videoRef.current, {
-        currentTime: videoRef.current.duration,
+    function setupVideoAnimation() {
+      videoTimeline.to(video, {
+        currentTime: video.duration,
+        ease: "none",
       });
-    };
+
+      ScrollTrigger.refresh();
+    }
+
+    if (video.readyState >= 1) {
+      setupVideoAnimation();
+    } else {
+      video.addEventListener("loadedmetadata", setupVideoAnimation, {
+        once: true,
+      });
+    }
   }, []);
 
   return (
