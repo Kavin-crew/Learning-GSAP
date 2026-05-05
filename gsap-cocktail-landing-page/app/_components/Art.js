@@ -62,7 +62,7 @@ export default function Art() {
           <div className="cocktail-img">
             <Image
               src={maskCocktailImage}
-              alt="Masked Cocktail"
+              alt="bartender pouring cocktail focused on the pouring action"
               loading="eager"
               className="abs-center masked-img size-full object-contain"
             />

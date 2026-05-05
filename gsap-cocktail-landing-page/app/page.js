@@ -3,6 +3,7 @@ import Hero from "@/app/_components/Hero";
 import Cocktails from "@/app/_components/Cocktails";
 import About from "@/app/_components/About";
 import Art from "@/app/_components/Art";
+import Menu from "@/app/_components/Menu";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Cocktails />
       <About />
       <Art />
+      <Menu />
     </main>
   );
 }

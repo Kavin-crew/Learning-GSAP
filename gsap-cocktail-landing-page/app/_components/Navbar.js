@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Navbar() {
   useGSAP(() => {
     gsap.fromTo(
-      "nav",
+      ".main-nav",
       // Initial state
       {
         backgroundColor: "transparent",
@@ -36,7 +36,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav>
+    <nav className="main-nav">
       <div>
         <Link href="/" className="flex items-center gap-2">
           <Image src={Logo} alt="Velvet Pour Logo" width={32} height={32} />
