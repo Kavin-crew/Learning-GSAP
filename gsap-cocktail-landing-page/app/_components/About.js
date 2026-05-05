@@ -39,7 +39,7 @@ export default function About() {
         stagger: 0.02,
       })
       .from(
-        ".top-grid div, bottom-grid div",
+        ".top-grid div, .bottom-grid div",
         {
           opacity: 0,
           duration: 1,
