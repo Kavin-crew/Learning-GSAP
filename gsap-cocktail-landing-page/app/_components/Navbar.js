@@ -38,7 +38,7 @@ export default function Navbar() {
   return (
     <nav>
       <div>
-        <Link href="#home" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <Image src={Logo} alt="Velvet Pour Logo" width={32} height={32} />
           <p>Velvet Pour</p>
         </Link>
