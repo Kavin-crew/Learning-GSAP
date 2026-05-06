@@ -3,6 +3,7 @@
 import { navLinks } from "@/app/_constants/index";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useState } from "react";
 import Logo from "@/public/images/logo.webp";
 import gsap from "gsap";
 import Image from "next/image";
@@ -11,6 +12,8 @@ import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Navbar() {
+  const [activeSection, setActiveSection] = useState("home");
+
   useGSAP(() => {
     gsap.fromTo(
       ".main-nav",
@@ -35,6 +38,40 @@ export default function Navbar() {
     );
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY < 200) {
+        setActiveSection("");
+        return;
+      }
+
+      let currentSection = "";
+
+      navLinks.forEach((link) => {
+        const section = document.getElementById(link.id);
+
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+
+          if (
+            window.scrollY >= sectionTop - 200 &&
+            window.scrollY < sectionTop + sectionHeight - 200
+          ) {
+            currentSection = link.id;
+          }
+        }
+      });
+
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <nav className="main-nav">
       <div>
@@ -46,7 +83,14 @@ export default function Navbar() {
         <ul>
           {navLinks.map((link) => (
             <li key={link.id}>
-              <Link href={`#${link.id}`}>{link.title}</Link>
+              <Link
+                href={`#${link.id}`}
+                className={`hover:text-yellow ${
+                  activeSection === link.id ? "text-yellow" : "text-white"
+                }`}
+              >
+                {link.title}
+              </Link>
             </li>
           ))}
         </ul>

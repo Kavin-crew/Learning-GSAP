@@ -105,22 +105,24 @@ export default function Hero() {
   return (
     <>
       <section id="hero" className="noisy">
-        <h1 className="title uppercase">Mojito</h1>
+        <h1 className="title uppercase mix-blend-color pointer-events-auto">
+          Mojito
+        </h1>
         <Image
           src={leftLeaf}
           alt="Left Leaf"
-          className="left-leaf"
+          className="left-leaf pointer-events-none"
           loading="eager"
         />
         <Image
           src={rightLeaf}
           alt="Right Leaf"
-          className="right-leaf"
+          className="right-leaf pointer-events-none"
           loading="eager"
         />
 
         <div className="body">
-          <div className="content">
+          <div className="content pointer-events-auto">
             <div className="space-y-5 hidden md:block">
               <p className="sub-heading">Cool. Crisp. Classic.</p>
               <p className="subtitle text-left">
@@ -142,7 +144,7 @@ export default function Hero() {
         </div>
       </section>
 
-      <div className="video absolute inset-0">
+      <div className="video absolute inset-0 pointer-events-none">
         <video
           ref={videoRef}
           muted

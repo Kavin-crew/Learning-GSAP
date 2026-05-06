@@ -26,8 +26,18 @@ export default function Cocktails() {
   });
   return (
     <section id="cocktails" className="noisy">
-      <Image src={leftLeaf} alt="green leaf falling down" id="c-left-leaf" />
-      <Image src={rightLeaf} alt="green leaf falling down" id="c-right-leaf" />
+      <Image
+        src={leftLeaf}
+        alt="green leaf falling down"
+        id="c-left-leaf"
+        className="pointer-events-none"
+      />
+      <Image
+        src={rightLeaf}
+        alt="green leaf falling down"
+        id="c-right-leaf"
+        className="pointer-events-none"
+      />
 
       <div className="list">
         <div className="popular">

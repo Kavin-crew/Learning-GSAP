@@ -111,7 +111,12 @@ export default function Menu() {
             onClick={() => goToSlide(currentIndex + 1)}
           >
             {nextCocktail.name}
-            <Image src={leftArrow} alt="left arrow icon" aria-hidden="true" />
+            <Image
+              src={leftArrow}
+              alt="left arrow icon"
+              aria-hidden="true"
+              className="ml-auto"
+            />
           </button>
         </div>
 
