@@ -25,41 +25,46 @@ export default function Cocktails() {
       .from("#c-right-leaf", { x: 100, y: 100 });
   });
   return (
-    <section id="cocktails" className="noisy">
+    <section
+      id="cocktails"
+      className="noisy relative min-h-dvh w-full overflow-hidden"
+    >
       <Image
         src={leftLeaf}
         alt="green leaf falling down"
         id="c-left-leaf"
-        className="pointer-events-none"
+        className="pointer-events-none absolute left-0 md:bottom-0 md:top-auto -top-20 md:w-fit w-1/3"
       />
       <Image
         src={rightLeaf}
         alt="green leaf falling down"
         id="c-right-leaf"
-        className="pointer-events-none"
+        className="pointer-events-none absolute right-0 md:bottom-0 md:top-auto -top-20 md:w-fit w-1/3"
       />
 
-      <div className="list">
-        <div className="popular">
-          <h2>Most popular cocktails:</h2>
+      <div className="list container mx-auto relative z-10 flex md:flex-row flex-col justify-between items-start gap-20 pt-40 2xl:px-0 px-5">
+        <div className="popular space-y-8 w-full md:w-fit">
+          <h2 className="text-xl font-medium">Most popular cocktails:</h2>
 
-          <ul>
+          <ul className="space-y-8">
             {cocktailLists.map(({ name, country, detail, price }) => (
-              <li key={name}>
+              <li key={name} className="flex justify-between items-start">
                 <div className="md:me-28">
-                  <h3>{name}</h3>
-                  <p>
+                  <h3 className="font-modern-negra 2xl:text-3xl text-xl text-yellow">
+                    {name}
+                  </h3>
+                  <p className="text-sm">
                     {country} | {detail}
                   </p>
                 </div>
-                <span>- {price}</span>
+                <span className="text-xl font-medium">- {price}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="Loved">
-          <h2>Most loved mocktails:</h2>
+        <div className="space-y-8 w-full md:w-fit pb-20 md:pb-0">
+          <h2 className="mb-8">Most loved mocktails:</h2>
 
           <ul>
             {mockTailLists.map(({ name, country, detail, price }) => (

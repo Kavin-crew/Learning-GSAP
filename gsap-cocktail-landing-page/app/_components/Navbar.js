@@ -12,8 +12,6 @@ import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Navbar() {
-  const [activeSection, setActiveSection] = useState("home");
-
   useGSAP(() => {
     gsap.fromTo(
       ".main-nav",
@@ -49,7 +47,7 @@ export default function Navbar() {
         <ul>
           {navLinks.map((link) => (
             <li key={link.id}>
-              <Link href={`#${link.id}`} className={`hover:text-yellow`}>
+              <Link href={`#${link.id}`} className="hover:text-yellow">
                 {link.title}
               </Link>
             </li>

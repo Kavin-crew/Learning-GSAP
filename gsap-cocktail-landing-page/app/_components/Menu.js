@@ -34,6 +34,20 @@ export default function Menu() {
   const prevCocktail = getCocktailAt(-1);
 
   useGSAP(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#menu",
+          start: "top center",
+          end: "bottom top",
+          scrub: true,
+        },
+      })
+      .to("#m-left-leaf", { y: -100 }, 0)
+      .to("#m-right-leaf", { y: 250 }, 0);
+  });
+
+  useGSAP(() => {
     gsap.fromTo(
       "#title",
       { opacity: 0 },
@@ -49,18 +63,6 @@ export default function Menu() {
       { opacity: 0, yPercent: 100 },
       { opacity: 1, yPercent: 0, duration: 1, ease: "power1.inOut" },
     );
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: "#menu",
-          start: "top center",
-          end: "bottom top",
-          scrub: true,
-        },
-      })
-      .to("#m-left-leaf", { y: -100 }, 0)
-      .to("#m-right-leaf", { y: 400 }, 0);
   }, [currentIndex]);
 
   return (

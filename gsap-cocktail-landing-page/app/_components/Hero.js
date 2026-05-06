@@ -123,25 +123,28 @@ export default function Hero() {
 
   return (
     <>
-      <section id="hero" className="noisy">
-        <h1 className="title uppercase mix-blend-color pointer-events-auto">
+      <section
+        id="hero"
+        className="noisy relative z-10 min-h-dvh w-full border border-transparent"
+      >
+        <h1 className="title mix-blend-color md:mt-32 mt-40 text-8xl md:text-[12vw] leading-none text-center font-modern-negra">
           Mojito
         </h1>
         <Image
           src={leftLeaf}
           alt="Left Leaf"
-          className="left-leaf pointer-events-none"
+          className="left-leaf pointer-events-none absolute left-0 md:top-20 xl:top-36 2xl:top-52 md:bottom-auto -bottom-20 md:w-fit w-1/3"
           loading="eager"
         />
         <Image
           src={rightLeaf}
           alt="Right Leaf"
-          className="right-leaf pointer-events-none"
+          className="right-leaf pointer-events-none absolute right-0 md:bottom-0 xl:top-0 2xl:top-12 top-1/2 md:w-fit w-24"
           loading="eager"
         />
         <Link
           href="#cocktails"
-          className="pointer-events-auto right-[10%] top-[40%] absolute"
+          className="pointer-events-auto absolute top-[40%] right-[20%] hidden md:block"
         >
           <svg
             className="scroll-indicator"
@@ -172,22 +175,25 @@ export default function Hero() {
           </svg>
         </Link>
 
-        <div className="body">
-          <div className="content pointer-events-auto">
-            <div className="space-y-5 hidden md:block">
+        <div className="body container mx-auto absolute left-1/2 -translate-x-1/2 lg:bottom-20 top-auto md:top-[30vh] flex justify-between items-end px-5">
+          <div className="content pointer-events-auto flex lg:flex-row flex-col w-full gap-10 justify-between items-center lg:items-end mx-auto">
+            <div className="hidden md:block">
               <p className="sub-heading">Cool. Crisp. Classic.</p>
-              <p className="subtitle text-left">
+              <p className="subtitle text-left font-modern-negra text-6xl text-yellow max-w-xl">
                 Sip the Spirit <br /> of Summer
               </p>
             </div>
 
-            <div className="view-cocktails">
-              <p className="subtitle">
+            <div className="view-cocktails space-y-5 text-lg lg:max-w-2xs md:max-w-xs w-full">
+              <p className="subtitle md:text-start text-center">
                 Every cocktail on our menu is a blend of premium ingredients,
                 creative flair, and timeless recipes — designed to delight your
                 senses.
               </p>
-              <Link href="#cocktails" className="link text-left">
+              <Link
+                href="#cocktails"
+                className="link font-semibold opacity-80 2xl:text-start text-center hover:text-yellow"
+              >
                 View Cocktails
               </Link>
             </div>
