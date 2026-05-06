@@ -125,9 +125,9 @@ export default function Hero() {
     <>
       <section
         id="hero"
-        className="noisy relative z-10 min-h-dvh w-full border border-transparent"
+        className="noisy relative z-10 min-h-dvh w-full border border-transparent px-5"
       >
-        <h1 className="title mix-blend-color md:mt-32 mt-40 text-8xl md:text-[12vw] leading-none text-center font-modern-negra">
+        <h1 className="title mix-blend-hard-light md:mt-32 mt-40 text-8xl md:text-[12vw] leading-none text-center font-modern-negra uppercase">
           Mojito
         </h1>
         <Image

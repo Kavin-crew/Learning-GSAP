@@ -27,7 +27,7 @@ export default function Cocktails() {
   return (
     <section
       id="cocktails"
-      className="noisy relative min-h-dvh w-full overflow-hidden"
+      className="noisy relative min-h-dvh w-full overflow-hidden px-5"
     >
       <Image
         src={leftLeaf}
