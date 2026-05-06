@@ -37,14 +37,17 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="main-nav">
-      <div>
-        <Link href="/" className="flex items-center gap-2">
+    <nav className="main-nav fixed z-50 w-full">
+      <div className="flex md:flex-row flex-col md:justify-between items-center gap-5 py-5 lg:px-0 px-5 container mx-auto">
+        <Link
+          href="/"
+          className="flex items-center gap-2 cursor-pointer text-nowrap md:text-base text-sm"
+        >
           <Image src={Logo} alt="Velvet Pour Logo" width={32} height={32} />
-          <p>Velvet Pour</p>
+          <p className="font-modern-negra text-3xl -mb-2">Velvet Pour</p>
         </Link>
 
-        <ul>
+        <ul className="flex-center lg:gap-12 gap-7">
           {navLinks.map((link) => (
             <li key={link.id}>
               <Link href={`#${link.id}`} className="hover:text-yellow">

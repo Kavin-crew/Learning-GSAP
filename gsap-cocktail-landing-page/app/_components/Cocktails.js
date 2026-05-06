@@ -64,18 +64,20 @@ export default function Cocktails() {
         </div>
 
         <div className="space-y-8 w-full md:w-fit pb-20 md:pb-0">
-          <h2 className="mb-8">Most loved mocktails:</h2>
+          <h2 className="mb-8 text-xl font-medium">Most loved mocktails:</h2>
 
-          <ul>
+          <ul className="space-y-8">
             {mockTailLists.map(({ name, country, detail, price }) => (
-              <li key={name}>
+              <li key={name} className="flex justify-between items-start">
                 <div className="me-28">
-                  <h3>{name}</h3>
-                  <p>
+                  <h3 className="font-modern-negra 2xl:text-3xl text-xl text-yellow">
+                    {name}
+                  </h3>
+                  <p className="text-sm">
                     {country} | {detail}
                   </p>
                 </div>
-                <span>- {price}</span>
+                <span className="text-xl font-medium">- {price}</span>
               </li>
             ))}
           </ul>

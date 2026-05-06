@@ -192,7 +192,7 @@ export default function Hero() {
               </p>
               <Link
                 href="#cocktails"
-                className="link font-semibold opacity-80 2xl:text-start text-center hover:text-yellow"
+                className="link font-semibold opacity-80 md:text-start text-center hover:text-yellow"
               >
                 View Cocktails
               </Link>
@@ -203,6 +203,7 @@ export default function Hero() {
 
       <div className="video absolute inset-0 pointer-events-none">
         <video
+          className="w-full md:h-[80%] h-1/2 absolute bottom-0 left-0 md:object-contain object-bottom object-cover"
           ref={videoRef}
           muted
           playsInline
