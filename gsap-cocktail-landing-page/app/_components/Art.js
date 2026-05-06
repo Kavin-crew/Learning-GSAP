@@ -47,7 +47,7 @@ export default function Art() {
   return (
     <section id="art">
       <div className="container mx-auto h-full pt-20">
-        <h2 className="will-fade uppercase">The Art</h2>
+        <h2 className="will-fade uppercase xl:text-[15vw]">The Art</h2>
 
         <div className="content">
           <ul className="space-y-4 will-fade">

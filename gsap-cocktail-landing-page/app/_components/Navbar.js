@@ -38,40 +38,6 @@ export default function Navbar() {
     );
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY < 200) {
-        setActiveSection("");
-        return;
-      }
-
-      let currentSection = "";
-
-      navLinks.forEach((link) => {
-        const section = document.getElementById(link.id);
-
-        if (section) {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-
-          if (
-            window.scrollY >= sectionTop - 200 &&
-            window.scrollY < sectionTop + sectionHeight - 200
-          ) {
-            currentSection = link.id;
-          }
-        }
-      });
-
-      setActiveSection(currentSection);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <nav className="main-nav">
       <div>
@@ -83,12 +49,7 @@ export default function Navbar() {
         <ul>
           {navLinks.map((link) => (
             <li key={link.id}>
-              <Link
-                href={`#${link.id}`}
-                className={`hover:text-yellow ${
-                  activeSection === link.id ? "text-yellow" : "text-white"
-                }`}
-              >
+              <Link href={`#${link.id}`} className={`hover:text-yellow`}>
                 {link.title}
               </Link>
             </li>
