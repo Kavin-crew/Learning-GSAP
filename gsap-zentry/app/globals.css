@@ -43,8 +43,8 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #dfdff0;
+  --background: #dfdff2;
+  --foreground: #010101;
 }
 
 @theme inline {
@@ -88,6 +88,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-general);
+  width: 100dvw;
 }
 
 @layer utilities {
