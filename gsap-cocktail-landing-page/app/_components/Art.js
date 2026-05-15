@@ -9,10 +9,11 @@ import { useMediaQuery } from "react-responsive";
 import { useGSAP } from "@gsap/react";
 
 export default function Art() {
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isMobile = useMediaQuery({ maxWidth: 425 });
+  const isTablet = useMediaQuery({ maxWidth: 767 });
 
   useGSAP(() => {
-    const start = isMobile ? "top 20%" : "top top";
+    const start = isMobile ? "top top" : isTablet ? "top 20%" : "top top";
 
     const maskedTimeline = gsap.timeline({
       scrollTrigger: {
@@ -45,15 +46,15 @@ export default function Art() {
   });
 
   return (
-    <section id="art">
-      <div className="container mx-auto h-full pt-20 px-5">
-        <h2 className="will-fade uppercase xl:text-[15vw]">The Art</h2>
+    <div id="art" className="noisy">
+      <div className="container mx-auto h-full pt-20">
+        <h2 className="will-fade uppercase text-8xl md:text-[12vw]">The ART</h2>
 
         <div className="content">
           <ul className="space-y-4 will-fade">
             {goodLists.map((feature, index) => (
               <li key={index} className="flex items-center gap-2">
-                <Image src={checkImage} alt="checkmark icon" />
+                <Image src={checkImage} alt="check" />
                 <p>{feature}</p>
               </li>
             ))}
@@ -62,8 +63,7 @@ export default function Art() {
           <div className="cocktail-img">
             <Image
               src={maskCocktailImage}
-              alt="bartender pouring cocktail focused on the pouring action"
-              loading="eager"
+              alt="cocktail"
               className="abs-center masked-img size-full object-contain"
             />
           </div>
@@ -71,7 +71,7 @@ export default function Art() {
           <ul className="space-y-4 will-fade">
             {featureLists.map((feature, index) => (
               <li key={index} className="flex items-center justify-start gap-2">
-                <Image src={checkImage} alt="checkmark icon" />
+                <Image src={checkImage} alt="check" />
                 <p className="md:w-fit w-60">{feature}</p>
               </li>
             ))}
@@ -83,12 +83,12 @@ export default function Art() {
           <div id="masked-content">
             <h3>Made with Craft, Poured with Passion</h3>
             <p>
-              This isn&apos;t just a drink. It&apos;s a carefully crafted moment
-              made just for you.
+              This isn’t just a drink. It’s a carefully crafted moment made just
+              for you.
             </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

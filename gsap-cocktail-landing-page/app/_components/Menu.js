@@ -71,76 +71,87 @@ export default function Menu() {
       aria-labelledby="menu-heading"
       className="overflow-hidden mt-0 pt-32"
     >
-      <Image src={leftLeaf} alt="Left leaf" id="m-left-leaf" loading="eager" />
-      <Image
-        src={rightLeaf}
-        alt="Right leaf"
-        id="m-right-leaf"
-        loading="eager"
-      />
+      <div className="container mx-auto">
+        <Image
+          src={leftLeaf}
+          alt="Left leaf"
+          id="m-left-leaf"
+          loading="eager"
+        />
+        <Image
+          src={rightLeaf}
+          alt="Right leaf"
+          id="m-right-leaf"
+          loading="eager"
+        />
 
-      <h2 id="menu-heading" className="sr-only">
-        Cocktail Menu
-      </h2>
+        <h2 id="menu-heading" className="sr-only">
+          Cocktail Menu
+        </h2>
 
-      <nav className="cocktail-tabs" aria-label="Cocktail Navigation">
-        {allCocktails.map((cocktail, index) => {
-          const isActive = index === currentIndex;
-          return (
+        <nav className="cocktail-tabs" aria-label="Cocktail Navigation">
+          {allCocktails.map((cocktail, index) => {
+            const isActive = index === currentIndex;
+            return (
+              <button
+                key={cocktail.id}
+                className={`${isActive ? "text-yellow border-yellow" : "text-white/50 border-white/50"}`}
+                onClick={() => goToSlide(index)}
+                aria-pressed={isActive}
+              >
+                {cocktail.name}
+              </button>
+            );
+          })}
+        </nav>
+
+        <div className="content">
+          <div className="arrows">
             <button
-              key={cocktail.id}
-              className={`${isActive ? "text-yellow border-yellow" : "text-white/50 border-white/50"}`}
-              onClick={() => goToSlide(index)}
-              aria-pressed={isActive}
+              className="text-left"
+              onClick={() => goToSlide(currentIndex - 1)}
             >
-              {cocktail.name}
+              {prevCocktail.name}
+              <Image
+                src={rightArrow}
+                alt="right arrow icon"
+                aria-hidden="true"
+              />
             </button>
-          );
-        })}
-      </nav>
-
-      <div className="content">
-        <div className="arrows">
-          <button
-            className="text-left"
-            onClick={() => goToSlide(currentIndex - 1)}
-          >
-            {prevCocktail.name}
-            <Image src={rightArrow} alt="right arrow icon" aria-hidden="true" />
-          </button>
-          <button
-            className="text-left"
-            onClick={() => goToSlide(currentIndex + 1)}
-          >
-            {nextCocktail.name}
-            <Image
-              src={leftArrow}
-              alt="left arrow icon"
-              aria-hidden="true"
-              className="ml-auto"
-            />
-          </button>
-        </div>
-
-        <div className="cocktail">
-          <Image
-            width={400}
-            height={400}
-            src={currentCocktail.image}
-            alt={currentCocktail.name}
-            className="object-contain"
-          />
-        </div>
-
-        <div className="recipe">
-          <div ref={contentRef} className="info">
-            <p>Recipe for:</p>
-            <p id="title">{currentCocktail.name}</p>
+            <button
+              className="text-left"
+              onClick={() => goToSlide(currentIndex + 1)}
+            >
+              {nextCocktail.name}
+              <Image
+                src={leftArrow}
+                alt="left arrow icon"
+                aria-hidden="true"
+                className="ml-auto"
+              />
+            </button>
           </div>
 
-          <div className="details">
-            <h2>{currentCocktail.title}</h2>
-            <p>{currentCocktail.description}</p>
+          <div className="cocktail">
+            <Image
+              src={currentCocktail.image}
+              alt={currentCocktail.name}
+              className="object-contain"
+              width={400}
+              height={400}
+            />
+          </div>
+
+          <div className="recipe">
+            <div ref={contentRef} className="info">
+              <p>Recipe for:</p>
+              <p id="title">{currentCocktail.name}</p>
+            </div>
+
+            <div className="details">
+              <h2>{currentCocktail.title}</h2>
+              <p>{currentCocktail.description}</p>
+            </div>
           </div>
         </div>
       </div>

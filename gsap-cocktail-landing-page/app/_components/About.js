@@ -53,80 +53,82 @@ export default function About() {
   return (
     <section
       id="about"
-      className="min-h-screen py-28 2xl:px-0 container mx-auto"
+      className="min-h-screen py-13 md:py-28 2xl:px-0 container w-full max-w-full"
     >
-      <div className="mb-16 px-5">
-        <div className="content grid grid-cols-1 lg:grid-cols-12 gap-5">
-          <div className="md:col-span-8">
-            <p className="badge">Best Cocktails</p>
-            <h2 className="text-5xl md:text-6xl font-modern-negra max-w-lg">
-              Where every detail matters <span className="text-white">-</span>
-              from muddle to garnish
-            </h2>
-          </div>
-          <div className="sub-content md:col-span-4 space-y-5 flex flex-col justify-between">
-            <p className="text-lg">
-              Every cocktail we serve is a reflection of our obsession with
-              detail — from the first muddle to the final garnish. That care is
-              what turns a simple drink into something truly memorable.
-            </p>
+      <div className="container mx-auto px-5">
+        <div className="mb-16">
+          <div className="content grid grid-cols-1 lg:grid-cols-12 gap-5">
+            <div className="md:col-span-8">
+              <p className="badge">Best Cocktails</p>
+              <h2 className="text-5xl md:text-6xl font-modern-negra max-w-lg">
+                Where every detail matters <span className="text-white">-</span>
+                from muddle to garnish
+              </h2>
+            </div>
+            <div className="sub-content md:col-span-4 space-y-5 flex flex-col justify-between">
+              <p className="text-lg">
+                Every cocktail we serve is a reflection of our obsession with
+                detail — from the first muddle to the final garnish. That care
+                is what turns a simple drink into something truly memorable.
+              </p>
 
-            <div className="flex flex-col justify-between md:gap-2 gap-5">
-              <p className="md:text-3xl text-xl font-bold">
-                <span className="text-yellow font-bold text-5xl">4.5</span>/5
-              </p>
-              <p className="text-sm text-white-100">
-                More than +12000 customers
-              </p>
+              <div className="flex flex-col justify-between md:gap-2 gap-5">
+                <p className="md:text-3xl text-xl font-bold">
+                  <span className="text-yellow font-bold text-5xl">4.5</span>/5
+                </p>
+                <p className="text-sm text-white-100">
+                  More than +12000 customers
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="top-grid grid grid-cols-1 md:grid-cols-12 gap-5 mb-5 px-5">
-        <div className="sm:col-span-4 lg:col-span-3 rounded-3xl overflow-hidden h-72 relative">
-          <Image
-            src={aboutImage1}
-            alt="close-up of a cocktail glass filled with a vibrant red drink, garnished with a fresh lime wedge and a sprig of mint, sitting on a rustic wooden bar counter"
-            className="object-cover w-full h-full"
-          />
-          <div className="noisy" />
+        <div className="top-grid grid grid-cols-1 md:grid-cols-12 gap-5 mb-5">
+          <div className="sm:col-span-4 lg:col-span-3 rounded-3xl overflow-hidden h-72 relative">
+            <Image
+              src={aboutImage1}
+              alt="close-up of a cocktail glass filled with a vibrant red drink, garnished with a fresh lime wedge and a sprig of mint, sitting on a rustic wooden bar counter"
+              className="object-cover w-full h-full"
+            />
+            <div className="noisy" />
+          </div>
+
+          <div className="sm:col-span-4 lg:col-span-6 rounded-3xl overflow-hidden h-72 relative">
+            <Image
+              src={aboutImage2}
+              alt="group of friends enjoying cocktails at the bar, smiling and clinking glasses together"
+              className="object-cover w-full h-full"
+            />
+            <div className="noisy" />
+          </div>
+
+          <div className="sm:col-span-4 lg:col-span-3 rounded-3xl overflow-hidden h-72 relative">
+            <Image
+              src={aboutImage5}
+              alt="bartender pouring a cocktail from a shaker into a glass, with a focused expression and precise technique"
+              className="object-cover w-full h-full"
+            />
+            <div className="noisy" />
+          </div>
         </div>
 
-        <div className="sm:col-span-4 lg:col-span-6 rounded-3xl overflow-hidden h-72 relative">
-          <Image
-            src={aboutImage2}
-            alt="group of friends enjoying cocktails at the bar, smiling and clinking glasses together"
-            className="object-cover w-full h-full"
-          />
-          <div className="noisy" />
-        </div>
-
-        <div className="sm:col-span-4 lg:col-span-3 rounded-3xl overflow-hidden h-72 relative">
-          <Image
-            src={aboutImage5}
-            alt="bartender pouring a cocktail from a shaker into a glass, with a focused expression and precise technique"
-            className="object-cover w-full h-full"
-          />
-          <div className="noisy" />
-        </div>
-      </div>
-
-      <div className="bottom-grid grid grid-cols-1 md:grid-cols-12 gap-5 px-5">
-        <div className="md:col-span-8  rounded-3xl overflow-hidden h-72 relative">
-          <Image
-            src={aboutImage3}
-            alt="overhead shot of a cocktail being garnished with a twist of citrus peel, showcasing the vibrant colors and textures of the drink"
-            className="object-cover w-full h-full"
-          />
-          <div className="noisy" />
-        </div>
-        <div className="md:col-span-4 rounded-3xl overflow-hidden h-72 relative">
-          <Image
-            src={aboutImage4}
-            alt="close-up of a cocktail glass filled with a bright green drink, garnished with a slice of cucumber and a sprig of dill, sitting on a sleek bar counter with a blurred background of bottles and glassware"
-            className="object-cover w-full h-full"
-          />
-          <div className="noisy" />
+        <div className="bottom-grid grid grid-cols-1 md:grid-cols-12 gap-5">
+          <div className="md:col-span-8  rounded-3xl overflow-hidden h-72 relative">
+            <Image
+              src={aboutImage3}
+              alt="overhead shot of a cocktail being garnished with a twist of citrus peel, showcasing the vibrant colors and textures of the drink"
+              className="object-cover w-full h-full"
+            />
+            <div className="noisy" />
+          </div>
+          <div className="md:col-span-4 rounded-3xl overflow-hidden h-72 relative">
+            <Image
+              src={aboutImage4}
+              alt="close-up of a cocktail glass filled with a bright green drink, garnished with a slice of cucumber and a sprig of dill, sitting on a sleek bar counter with a blurred background of bottles and glassware"
+              className="object-cover w-full h-full"
+            />
+            <div className="noisy" />
+          </div>
         </div>
       </div>
     </section>

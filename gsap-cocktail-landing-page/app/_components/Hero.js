@@ -81,13 +81,13 @@ export default function Hero() {
       .to(".left-leaf", { y: -200 }, 0);
 
     const startValue = isMobile
-      ? "top 75%"
+      ? "top 50%"
       : isTablet
         ? "top 50%"
         : "center 60%";
 
     const endValue = isMobile
-      ? "140% top"
+      ? "43% top"
       : isTablet
         ? "120% top"
         : "bottom top";
@@ -125,77 +125,79 @@ export default function Hero() {
     <>
       <section
         id="hero"
-        className="noisy relative z-10 min-h-dvh w-full border border-transparent px-5"
+        className="noisy relative z-10 w-full border border-transparent min-h-100 md:min-h-dvh"
       >
-        <h1 className="title mix-blend-hard-light md:mt-32 mt-40 text-8xl md:text-[12vw] leading-none text-center font-modern-negra uppercase">
-          Mojito
-        </h1>
-        <Image
-          src={leftLeaf}
-          alt="Left Leaf"
-          className="left-leaf pointer-events-none absolute left-0 md:top-20 xl:top-36 2xl:top-52 md:bottom-auto -bottom-20 md:w-fit w-1/3"
-          loading="eager"
-        />
-        <Image
-          src={rightLeaf}
-          alt="Right Leaf"
-          className="right-leaf pointer-events-none absolute right-0 md:bottom-0 xl:top-0 2xl:top-12 top-1/2 md:w-fit w-24"
-          loading="eager"
-        />
-        <Link
-          href="#cocktails"
-          className="pointer-events-auto absolute top-[40%] right-[20%] hidden md:block"
-        >
-          <svg
-            className="scroll-indicator"
-            width="23"
-            height="152"
-            viewBox="0 0 23 152"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+        <div className="container mx-auto px-5">
+          <h1 className="title mix-blend-hard-light md:mt-32 mt-40 text-8xl md:text-[12vw] leading-none text-center font-modern-negra uppercase">
+            Mojito
+          </h1>
+          <Image
+            src={leftLeaf}
+            alt="Left Leaf"
+            className="left-leaf pointer-events-none absolute left-0 md:top-20 xl:top-36 2xl:top-52 md:bottom-auto -bottom-20 md:w-fit w-1/3"
+            loading="eager"
+          />
+          <Image
+            src={rightLeaf}
+            alt="Right Leaf"
+            className="right-leaf pointer-events-none absolute right-0 md:bottom-0 xl:top-0 2xl:top-12 top-1/2 md:w-fit w-24"
+            loading="eager"
+          />
+          <Link
+            href="#cocktails"
+            className="pointer-events-auto absolute top-[40%] right-[20%] hidden md:block"
           >
-            <path
-              d="M9.98524 151.061C10.571 151.646 11.5208 151.646 12.1066 151.061L21.6525 141.515C22.2383 140.929 22.2383 139.979 21.6525 139.393C21.0667 138.808 20.117 138.808 19.5312 139.393L11.0459 147.879L2.56062 139.393C1.97483 138.808 1.02508 138.808 0.439296 139.393C-0.146491 139.979 -0.14649 140.929 0.439296 141.515L9.98524 151.061ZM11.0459 150L12.5459 150L12.5459 -6.55671e-08L11.0459 0L9.54589 6.55671e-08L9.5459 150L11.0459 150Z"
-              fill="url(#paint0_linear)"
-            />
+            <svg
+              className="scroll-indicator"
+              width="23"
+              height="152"
+              viewBox="0 0 23 152"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.98524 151.061C10.571 151.646 11.5208 151.646 12.1066 151.061L21.6525 141.515C22.2383 140.929 22.2383 139.979 21.6525 139.393C21.0667 138.808 20.117 138.808 19.5312 139.393L11.0459 147.879L2.56062 139.393C1.97483 138.808 1.02508 138.808 0.439296 139.393C-0.146491 139.979 -0.14649 140.929 0.439296 141.515L9.98524 151.061ZM11.0459 150L12.5459 150L12.5459 -6.55671e-08L11.0459 0L9.54589 6.55671e-08L9.5459 150L11.0459 150Z"
+                fill="url(#paint0_linear)"
+              />
 
-            <defs>
-              <linearGradient
-                id="paint0_linear"
-                x1="11.5459"
-                y1="0"
-                x2="11.5459"
-                y2="150"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#EFEFEF" stopOpacity="0" />
-                <stop offset="1" stopColor="#EFEFEF" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </Link>
+              <defs>
+                <linearGradient
+                  id="paint0_linear"
+                  x1="11.5459"
+                  y1="0"
+                  x2="11.5459"
+                  y2="150"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stopColor="#EFEFEF" stopOpacity="0" />
+                  <stop offset="1" stopColor="#EFEFEF" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </Link>
 
-        <div className="body container mx-auto absolute left-1/2 -translate-x-1/2 lg:bottom-20 top-auto md:top-[30vh] flex justify-between items-end px-5">
-          <div className="content pointer-events-auto flex lg:flex-row flex-col w-full gap-10 justify-between items-center lg:items-end mx-auto">
-            <div className="hidden md:block">
-              <p className="sub-heading">Cool. Crisp. Classic.</p>
-              <p className="subtitle text-left font-modern-negra text-6xl text-yellow max-w-xl">
-                Sip the Spirit <br /> of Summer
-              </p>
-            </div>
+          <div className="body container mx-auto absolute left-1/2 -translate-x-1/2 lg:bottom-20 top-auto md:top-[30vh] flex justify-between items-end px-5">
+            <div className="content pointer-events-auto flex lg:flex-row flex-col w-full gap-10 justify-between items-center lg:items-end mx-auto">
+              <div className="hidden md:block">
+                <p className="sub-heading">Cool. Crisp. Classic.</p>
+                <p className="subtitle text-left font-modern-negra text-6xl text-yellow max-w-xl">
+                  Sip the Spirit <br /> of Summer
+                </p>
+              </div>
 
-            <div className="view-cocktails space-y-5 text-lg lg:max-w-2xs md:max-w-xs w-full">
-              <p className="subtitle md:text-start text-center">
-                Every cocktail on our menu is a blend of premium ingredients,
-                creative flair, and timeless recipes — designed to delight your
-                senses.
-              </p>
-              <Link
-                href="#cocktails"
-                className="link font-semibold opacity-80 md:text-start text-center hover:text-yellow"
-              >
-                View Cocktails
-              </Link>
+              <div className="view-cocktails space-y-5 text-lg lg:max-w-2xs md:max-w-xs w-full">
+                <p className="subtitle md:text-start text-center">
+                  Every cocktail on our menu is a blend of premium ingredients,
+                  creative flair, and timeless recipes — designed to delight
+                  your senses.
+                </p>
+                <Link
+                  href="#cocktails"
+                  className="link font-semibold opacity-80 md:text-start text-center hover:text-yellow"
+                >
+                  View Cocktails
+                </Link>
+              </div>
             </div>
           </div>
         </div>
