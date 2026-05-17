@@ -163,7 +163,7 @@ export default function Hero() {
             <Button
               id="watch-trailer"
               title="Watch Trailer "
-              LeftIcon={<TiLocationArrow />}
+              icon={<TiLocationArrow />}
               containerClass="bg-yellow-300 flex-center gap-1"
             />
           </div>
