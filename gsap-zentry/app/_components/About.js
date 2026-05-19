@@ -31,7 +31,7 @@ export default function About() {
 
   return (
     <section id="about" className="min-h-screen w-screen">
-      <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
+      <div className="relative mt-36 flex flex-col items-center gap-5">
         <h2 className="font-general text-center text-sm uppercase md:text-[10px]">
           Welcome to Zentry
         </h2>
