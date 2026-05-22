@@ -175,7 +175,7 @@ body {
   }
 
   .story-img-content {
-    @apply absolute top-16 left-10 h-[50dvh] w-full opacity-100 md:top-10 md:left-0 md:h-dvh lg:top-[-100px] lg:left-[-300px];
+    @apply absolute top-16 left-10 h-[50dvh] w-full opacity-100 md:top-10 md:left-0 md:h-dvh lg:-top-25 lg:-left-75;
 
     transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0) scale(1);
   }
