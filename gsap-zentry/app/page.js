@@ -5,6 +5,7 @@ import Features from "@/app/_components/Features";
 import Story from "@/app/_components/Story";
 import Contact from "@/app/_components/Contact";
 import Footer from "@/app/_components/Footer";
+import DummySections from "./_components/DummySections";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Features />
       <Story />
       <Contact />
+      <DummySections />
       <Footer />
     </main>
   );
