@@ -5,15 +5,19 @@ import { useEffect, useRef } from "react";
 /**
  * AnimatedSections
  *
- * A self-contained animated hero section. Wheel/touch events are captured
- * only while the cursor is inside the component. Once all slides have been
- * seen, scrolling passes through to the rest of the page normally.
+ * A self-contained animated hero section.
+ * Slide changes are triggered by:
+ *   - Mouse wheel (inside the component)
+ *   - Touch swipe (inside the component)
+ *   - Native scrollbar (window scroll events)
+ *
+ * At the first/last slide, scroll passes through to the rest of the page.
  *
  * Props:
- *   sections        — array of { heading, backgroundImage, backgroundPosition? }
- *   headerLeft      — left header slot (string | ReactNode)
- *   headerRight     — right header slot (string | ReactNode)
- *   height          — CSS height of the hero block (default "100vh")
+ *   sections    — array of { heading, backgroundImage, backgroundPosition? }
+ *   headerLeft  — left header slot (string | ReactNode)
+ *   headerRight — right header slot (string | ReactNode)
+ *   height      — CSS height of the hero block (default "100vh")
  */
 export default function AnimatedSections({
   sections: sectionData = DEFAULT_SECTIONS,
@@ -24,14 +28,13 @@ export default function AnimatedSections({
   const containerRef = useRef(null);
 
   useEffect(() => {
-    let observer;
+    let cleanup;
 
     const init = async () => {
       const { gsap } = await import("gsap");
-      const { Observer } = await import("gsap/Observer");
       const { SplitText } = await import("gsap/SplitText");
 
-      gsap.registerPlugin(Observer, SplitText);
+      gsap.registerPlugin(SplitText);
 
       const container = containerRef.current;
       if (!container) return;
@@ -58,6 +61,7 @@ export default function AnimatedSections({
       gsap.set(outerWrappers, { yPercent: 100 });
       gsap.set(innerWrappers, { yPercent: -100 });
 
+      // ── Core slide transition ──────────────────────────────────────────────
       function gotoSection(index, direction) {
         index = wrap(index);
         animating = true;
@@ -103,41 +107,80 @@ export default function AnimatedSections({
         currentIndex = index;
       }
 
-      // Instead of relying on Observer's preventDefault, we manually intercept
-      // wheel events and only block them when we're going to handle the slide change.
+      // ── Scroll sentinel setup ──────────────────────────────────────────────
+      // We insert a tall invisible div BELOW the component so that the
+      // browser scrollbar has room to scroll. Each "page" of scroll = one slide.
+      // We then intercept window scroll to drive the animation.
+      const SLIDE_SCROLL_PX = window.innerHeight; // 1vh per slide
+
+      const sentinel = document.createElement("div");
+      sentinel.style.cssText = `
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 1px;
+        pointer-events: none;
+        visibility: hidden;
+      `;
+      sentinel.style.height = `${SLIDE_SCROLL_PX * (total - 1)}px`;
+      container.style.position = "relative"; // ensure sentinel is relative to container
+      container.appendChild(sentinel);
+
+      // We wrap the component in a tall scroll container instead.
+      // Simpler approach: track window.scrollY relative to the component.
+      let lastScrollY = window.scrollY;
+      let scrollTimeout = null;
+
+      const onWindowScroll = () => {
+        const rect = container.getBoundingClientRect();
+        const scrollY = window.scrollY;
+        const delta = scrollY - lastScrollY;
+        lastScrollY = scrollY;
+
+        // Only act when the component is in view
+        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!inView) return;
+        if (animating) return;
+        if (delta === 0) return;
+
+        const goingDown = delta > 0;
+
+        if (goingDown && currentIndex === total - 1) return;
+        if (!goingDown && currentIndex === 0) return;
+
+        goingDown
+          ? gotoSection(currentIndex + 1, 1)
+          : gotoSection(currentIndex - 1, -1);
+      };
+
+      window.addEventListener("scroll", onWindowScroll, { passive: true });
+
+      // ── Wheel (mouse wheel inside the component) ───────────────────────────
       const onWheel = (e) => {
         if (animating) {
-          // Mid-animation — block so it doesn't stack
           e.preventDefault();
           return;
         }
 
         const goingDown = e.deltaY > 0;
+        if (goingDown && currentIndex === total - 1) return;
+        if (!goingDown && currentIndex === 0) return;
 
-        if (goingDown && currentIndex === total - 1) {
-          // Last slide, scrolling down — let the page scroll naturally
-          return;
-        }
-        if (!goingDown && currentIndex === 0) {
-          // First slide, scrolling up — let the page scroll naturally
-          return;
-        }
-
-        // We're handling it — block the native scroll
         e.preventDefault();
         goingDown
           ? gotoSection(currentIndex + 1, 1)
           : gotoSection(currentIndex - 1, -1);
       };
 
-      // passive: false is required so we can call preventDefault()
       container.addEventListener("wheel", onWheel, { passive: false });
 
-      // Touch support
+      // ── Touch ──────────────────────────────────────────────────────────────
       let touchStartY = 0;
+
       const onTouchStart = (e) => {
         touchStartY = e.touches[0].clientY;
       };
+
       const onTouchMove = (e) => {
         if (animating) {
           e.preventDefault();
@@ -149,7 +192,6 @@ export default function AnimatedSections({
         const goingUp = delta < -10;
 
         if (!goingDown && !goingUp) return;
-
         if (goingDown && currentIndex === total - 1) return;
         if (goingUp && currentIndex === 0) return;
 
@@ -164,22 +206,22 @@ export default function AnimatedSections({
       container.addEventListener("touchstart", onTouchStart, { passive: true });
       container.addEventListener("touchmove", onTouchMove, { passive: false });
 
+      // ── Boot ───────────────────────────────────────────────────────────────
       gotoSection(0, 1);
 
-      // Cleanup
-      observer = {
-        kill: () => {
-          container.removeEventListener("wheel", onWheel);
-          container.removeEventListener("touchstart", onTouchStart);
-          container.removeEventListener("touchmove", onTouchMove);
-        },
+      cleanup = () => {
+        window.removeEventListener("scroll", onWindowScroll);
+        container.removeEventListener("wheel", onWheel);
+        container.removeEventListener("touchstart", onTouchStart);
+        container.removeEventListener("touchmove", onTouchMove);
+        if (sentinel.parentNode) sentinel.parentNode.removeChild(sentinel);
+        clearTimeout(scrollTimeout);
       };
     };
 
     init();
-
     return () => {
-      observer && observer.kill();
+      cleanup && cleanup();
     };
   }, []);
 
@@ -189,15 +231,15 @@ export default function AnimatedSections({
       className="relative w-full overflow-hidden bg-black text-white select-none"
       style={{ height }}
     >
-      {/* ── Header inside the hero ─────────────────────────── */}
+      {/* Header */}
       {(headerLeft || headerRight) && (
-        <div className="absolute top-0 left-0 w-full z-3 h-[7em] flex items-center justify-between px-[5%] uppercase tracking-[0.5em] text-[clamp(0.66rem,2vw,1rem)]">
+        <div className="absolute top-0 left-0 w-full z-[3] h-[7em] flex items-center justify-between px-[5%] uppercase tracking-[0.5em] text-[clamp(0.66rem,2vw,1rem)]">
           <div>{headerLeft}</div>
           {headerRight && <div>{headerRight}</div>}
         </div>
       )}
 
-      {/* ── Slides ─────────────────────────────────────────── */}
+      {/* Slides */}
       {sectionData.map((s, i) => (
         <section
           key={i}
@@ -217,7 +259,7 @@ export default function AnimatedSections({
               >
                 <h2
                   data-heading
-                  className="z-2 text-center font-semibold leading-snug w-[90%] max-w-300"
+                  className="z-[2] text-center font-semibold leading-snug w-[90%] max-w-[1200px]"
                   style={{
                     fontSize: "clamp(1rem, 6vw, 10rem)",
                     marginRight: "-0.5em",

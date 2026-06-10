@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import AnimatedTitle from "@/app/_components/AnimatedTitle";
+import AnimatedHeading from "@/app/_components/ui/AnimatedHeading";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,6 +41,12 @@ export default function About() {
           title={`Disc<b>o</b>ver the world's l<b>a</b>rgest shared adventure`}
           containerClass="mt-5 !text-black text-center"
         />
+        <AnimatedHeading
+          as="h1"
+          className="text-8xl font-bold tracking-tight uppercase"
+        >
+          olha lazarieva
+        </AnimatedHeading>
 
         <div className="about-subtext">
           <p>The Game of Games begins-your life, now an epic MMORPG</p>
