@@ -25,15 +25,15 @@ export default function Navbar() {
     if (!navContainerRef.current) return;
     // if navbar is at the topmost of the page, show it and remove floating styles
     if (currentScrollY === 0) {
-      navContainerRef.current.classList.remove("-translate-y-24");
+      navContainerRef.current.classList.remove("-translate-y-31");
       navContainerRef.current.classList.add("translate-y-0");
       // user just scrolling down, hide the navbar and add floating styles
     } else if (currentScrollY > lastScrollY.current) {
       navContainerRef.current.classList.remove("translate-y-0");
-      navContainerRef.current.classList.add("-translate-y-24");
+      navContainerRef.current.classList.add("-translate-y-31");
       // user is scrolling up, show the navbar and add floating styles
     } else if (currentScrollY < lastScrollY.current) {
-      navContainerRef.current.classList.remove("-translate-y-24");
+      navContainerRef.current.classList.remove("-translate-y-31");
       navContainerRef.current.classList.add("translate-y-0");
     }
 

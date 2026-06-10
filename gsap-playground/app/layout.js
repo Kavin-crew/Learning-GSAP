@@ -5,7 +5,7 @@ import Navbar from "@/app/_components/Navbar";
 const sofiaSans = Sofia_Sans_Condensed({
   variable: "--font-sofia-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "900"],
 });
 
 const splineMono = Spline_Sans_Mono({

@@ -34,3 +34,7 @@ header ::selection {
   background: var(--foreground);
   color: var(--background);
 }
+
+.image-hero span {
+  font-family: fantasy !important;
+}
