@@ -59,7 +59,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex h-full items-center">
-          <div className="hidden md:flex gap-12">
+          <div className="hidden md:flex gap-30">
             {navItems.map((item, index) => (
               <Link
                 key={index}

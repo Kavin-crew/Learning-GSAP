@@ -1,4 +1,5 @@
 import FlairCursorTrailSection from "@/app/_components/FlairCursorTrailSection";
+import Image from "next/image";
 
 const flairImages = [
   "https://cdn-icons-png.magnific.com/512/18969/18969020.png",
@@ -25,14 +26,14 @@ export default function Hero() {
       gap={120}
       size={80}
       id="about"
-      className="min-h-screen pt-20 md:pt-50"
+      className="min-h-screen pt-20 md:pt-80"
     >
       {/* <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute top-0 left-0 h-full w-full object-cover"
+        className="absolute top-0 left-0 h-full w-full object-cover opacity-2"
       >
         <source src="/videos/circular-glitch.mp4" type="video/mp4" />
         Your browser does not support the video tag.
