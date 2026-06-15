@@ -7,11 +7,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const demoParagraphs = [
-  `Here's the thing: great animations don't just look cool. They're what make people stop scrolling, feel something, and actually remember your website.`,
+  `<green>Value</green> Today, development plays a key role in how users experience a product. I focus on building interfaces that are intuitive, reliable, and impactful—helping businesses connect with users, stand out, and drive real results.`,
 
-  `The <red>problem</red>? Most animation tutorials skip the "why" and jump straight to code that doesn't work. You're left copying and pasting, hoping something sticks.`,
-
-  `This course is <green>different.</green> We teach you the story behind every animation, the "why it works" so your ideas turn into memorable web experiences.`,
+  `<green>Approach</green> I value quality over quantity—every detail matters. I take time to understand the problem and focus on what truly adds value, aiming to deliver solutions that create impact and leave clients satisfied.`,
 ];
 
 function cleanKeywordText(word, color) {
@@ -114,10 +112,16 @@ export function WordHighlightParagraphs({
     <>
       <style>{`
         .keyword-wrapper {
-          position: relative;
-          isolation: isolate;
-          background-color: transparent !important;
-          overflow: visible;
+        position: relative;
+        isolation: isolate;
+        background-color: transparent !important;
+        overflow: visible;
+        color: #101010;
+        font-size: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-inline: 20px;
+        line-height: 100%;
         }
 
         .keyword-inner {
@@ -126,16 +130,14 @@ export function WordHighlightParagraphs({
         }
 
         .keyword-wrapper::before {
-          content: "";
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: calc(100% + 1rem);
-          height: calc(100% + 0.65rem);
-          transform: translate(-50%, -50%);
-          border-radius: 8px;
-          border: 1px dashed #111;
-          z-index: 1;
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: calc(100% + 1rem);
+        height: calc(100% + .15rem);
+        transform: translate(-50%, -50%);
+        z-index: 1;
         }
 
         .keyword-red::before {
@@ -143,7 +145,7 @@ export function WordHighlightParagraphs({
         }
 
         .keyword-green::before {
-          background: #27c39f;
+          background: #fff;
         }
       `}</style>
 
@@ -153,7 +155,7 @@ export function WordHighlightParagraphs({
       >
         <div className="flex min-h-screen items-center justify-center px-6">
           <div
-            className={`space-y-12 text-left text-3xl leading-[1.35] tracking-tight md:text-5xl ${className}`}
+            className={`space-y-12 text-left text-xl leading-[1.35] tracking-[-2%] md:text-4xl max-w-400 ${className}`}
           >
             {parsedParagraphs.map((paragraph, paragraphIndex) => (
               <p key={paragraphIndex}>
