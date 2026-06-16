@@ -198,12 +198,12 @@ export function WordHighlightParagraphs({
 
 export default function GSAPWordHighlightPreview() {
   return (
-    <main className="min-h-screen bg-[#101010] text-[#282828]">
+    <section className="min-h-screen bg-[#101010]">
       <WordHighlightParagraphs
         paragraphs={demoParagraphs}
         activeWordCount={10}
         staggerDelay={0.08}
       />
-    </main>
+    </section>
   );
 }

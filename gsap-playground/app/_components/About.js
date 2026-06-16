@@ -4,13 +4,14 @@ import Image from "next/image";
 import AnimatedHeading from "./AnimatedHeading";
 import HorizontalScrollSections from "./HorizontalScrollSections";
 import GSAPWordHighlightPreview from "./AnimatedWordsHighlight";
-import profile from "@/public/images/dummy-image.png";
+import profileImg from "@/public/images/kavin-1.png";
+import profile from "@/public/images/kavin-2.png";
 import desktopImage from "@/public/images/desktop.gif";
 
 export default function About() {
   return (
-    <section className="min-h-screen pt-20">
-      <AnimatedHeading className="font-sans text-8xl font-bold uppercase text-[10dvw] leading-[0.9] tracking-[-15px] text-center">
+    <section className="min-h-screen pt-20 bg-[#101010]">
+      <AnimatedHeading className="font-sans text-8xl font-bold uppercase text-[10dvw] leading-[0.9] tracking-[-15px] text-center text-[#efefef]">
         About Me
       </AnimatedHeading>
 
@@ -25,7 +26,7 @@ export default function About() {
                 id="about"
                 className="flex relative z-0 h-screen w-full justify-end overflow-hidden"
               >
-                <h2 className="font-sans uppercase font-bold text-[#efefef]  text-[15dvw] leading-[0.8] tracking-[-20px] -ml-3 -mb-3.5 text-theme-black absolute top-0 left-0">
+                <h2 className="font-sans uppercase font-bold text-[#efefef]  text-[15dvw] leading-[0.8] tracking-[-20px] -ml-3 -mb-3.5 text-theme-black absolute top-0 left-20">
                   Po
                   <br />
                   rtf
@@ -33,9 +34,9 @@ export default function About() {
                   olio
                 </h2>
 
-                <div className="content flex w-9/12 h-9/12 mt-auto mb-10">
+                <div className="content flex w-9/12 h-9/12 mt-auto mb-10 p-0 md:pl-20">
                   {/* heading */}
-                  <div className="w-1/3 flex items-end overflow-hidden relative bg-[#A9A9A9] ">
+                  <div className="w-1/3 flex items-end overflow-hidden relative bg-[#CFCFCF] ">
                     <h2 className="font-sans uppercase font-black text-[#101010] text-[10dvw] leading-[0.7] tracking-[-10px] -ml-4 -mb-3.5 text-theme-black">
                       Po
                       <br />
@@ -46,19 +47,18 @@ export default function About() {
                   </div>
 
                   {/* image area */}
-                  <div className="image-hero w-2/3 px-10 flex relative overflow-hidden">
-                    <Image
-                      src={profile}
-                      alt="image"
-                      className="absolute bottom-10 left-15"
-                    />
-
-                    <div className="flex flex-col gap-10 text-[#efefef] text-4xl leading-[1.3] tracking-[-2%] uppercase font-light max-w-9/12 relative z-10">
-                      <h2>
+                  <div className="image-hero w-full p-10 pb-5 pt-25 flex relative overflow-hidden">
+                    <div className="flex items-end gap-10 text-[#efefef] text-4xl leading-[1.3] tracking-[-2%] uppercase font-light max-w-9/12 relative z-10">
+                      <h2 className="relative md:absolute -top-10 left-0">
                         Hello <br />
                         I&apos;m Kavin
                       </h2>
-                      <p className="ml-auto max-w-6/12 text-3xl leading-[1.6]">
+
+                      <Image
+                        src={profileImg}
+                        alt="Portrait image of Kavin Abregana in black and white theme"
+                      />
+                      <p className="ml-auto text-3xl leading-[1.6]">
                         Junior Web Developer with over 4 years of experience
                         building responsive, impact-driven websites.
                       </p>
@@ -69,55 +69,46 @@ export default function About() {
             ),
           },
           {
-            className: "bg-violet-900 text-white overflow-hidden",
+            className: "bg-[#101010] text-[#efefef] overflow-hidden",
             content: (
-              <article className="flex relative z-0 h-screen w-full justify-end overflow-hidden">
-                <h2 className="font-sans uppercase font-bold text-[#efefef]  text-[15dvw] leading-[0.8] tracking-[-20px] -ml-3 -mb-3.5 text-theme-black absolute top-0 left-0">
-                  Po
-                  <br />
-                  rtf
-                  <br />
-                  olio
-                </h2>
+              <article className="flex relative z-0 h-screen w-full overflow-hidden gap-50 p-20">
+                <div className="flex flex-col justify-between relative h-full">
+                  <Image
+                    unoptimized
+                    width={400}
+                    height={400}
+                    src={desktopImage}
+                    alt="looping animation of laptop"
+                  />
 
-                <div className="content flex w-9/12 h-9/12 mt-auto mb-10">
-                  {/* heading */}
-                  <div className="w-1/3 flex items-end overflow-hidden relative bg-[#A9A9A9] ">
-                    <h2 className="font-sans uppercase font-black text-[#101010] text-[10dvw] leading-[0.7] tracking-[-10px] -ml-4 -mb-3.5 text-theme-black">
-                      Po
-                      <br />
-                      rtf
-                      <br />
-                      olio
-                    </h2>
+                  <p className="text-2xl font-light leading-8.5 tracking-[-2%] uppercase w-100">
+                    My goal is to help companies and brands reach their full
+                    potential and leave their mark in a fast-moving world.
+                  </p>
+                </div>
 
-                    <Image
-                      src={desktopImage}
-                      alt="looping animation of laptop"
-                      unoptimized
-                      width={300}
-                      height={300}
-                    />
-                  </div>
+                <div className="w-9/12 flex flex-col justify-between h-full">
+                  <p className="text-5xl leading-[1.3] tracking-[-2%] uppercase font-light">
+                    My interest in web development started with curiosity. I
+                    began by experimenting the basics, breaking layouts, fixing
+                    them again, and slowly understanding how the web really
+                    works.
+                  </p>
 
-                  {/* image area */}
-                  <div className="image-hero w-2/3 px-10 flex relative overflow-hidden">
+                  <div className="inner-content flex gap-10 items-end">
                     <Image
                       src={profile}
-                      alt="image"
-                      className="absolute bottom-10 left-15"
+                      alt="Portrait image of Kavin Abregana with his laptop"
+                      width={600}
+                      height={600}
+                      className="w-1/2 max-w-125"
                     />
 
-                    <div className="flex flex-col gap-10 text-[#efefef] text-4xl leading-[1.3] tracking-[-2%] uppercase font-light max-w-9/12 relative z-10">
-                      <h2>
-                        Hello <br />
-                        I&apos;m Kavin
-                      </h2>
-                      <p className="ml-auto max-w-6/12 text-3xl leading-[1.6]">
-                        Junior Web Developer with over 4 years of experience
-                        building responsive, impact-driven websites.
-                      </p>
-                    </div>
+                    <p className="w-1/2 text-4xl leading-[1.6] tracking-[-2%] uppercase font-light">
+                      Today, I focus on growing as a front-end developer by
+                      building real projects, learning modern tools, and
+                      following industry best practices.
+                    </p>
                   </div>
                 </div>
               </article>
