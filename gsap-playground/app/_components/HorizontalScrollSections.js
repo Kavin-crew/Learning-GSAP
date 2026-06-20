@@ -16,7 +16,7 @@ import { useEffect, useRef } from "react";
  *   className    — extra classes on the outer wrapper
  */
 export default function HorizontalScrollSections({
-  panels = DEFAULT_PANELS,
+  panels,
   panelWidth = "100vw",
   scrubSpeed = 1,
   direction = "left",
@@ -102,27 +102,3 @@ export default function HorizontalScrollSections({
     </section>
   );
 }
-
-// ─── Default demo panels ──────────────────────────────────────────────────────
-const COLORS = [
-  "bg-neutral-900",
-  "bg-violet-900",
-  "bg-emerald-900",
-  "bg-rose-900",
-];
-const LABELS = ["Panel One", "Panel Two", "Panel Three", "Panel Four"];
-
-const DEFAULT_PANELS = LABELS.map((label, i) => ({
-  className: `${COLORS[i]} text-white`,
-  content: (
-    <div className="flex flex-col items-center justify-center w-full h-full gap-6 p-16">
-      <span className="text-sm uppercase tracking-widest opacity-50">
-        0{i + 1}
-      </span>
-      <h2 className="text-6xl font-bold text-center">{label}</h2>
-      <p className="text-white/50 max-w-sm text-center text-lg">
-        This is a full-height horizontal panel. Scroll advances to the next one.
-      </p>
-    </div>
-  ),
-}));

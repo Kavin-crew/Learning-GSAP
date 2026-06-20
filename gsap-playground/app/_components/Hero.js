@@ -24,8 +24,7 @@ export default function Hero() {
       images={[...flairImages]}
       gap={120}
       size={80}
-      id="about"
-      className="min-h-screen pt-20 md:pt-80"
+      className="min-h-screen pt-20 flex justify-center items-center"
     >
       <video
         autoPlay
@@ -38,9 +37,9 @@ export default function Hero() {
       </video>
 
       <div className="max-w-600 mx-auto px-8">
-        <h1 className="font-sans text-center font-bold text-[13dvw] uppercase leading-[0.7] tracking-[-28px] relative">
-          Front-end Developer
-          <div className="uppercase text-[1dvw] font-semibold tracking-[30px] gap-[2dvw] flex absolute right-16 -bottom-20 z-10">
+        <h1 className="font-sans text-[clamp(6rem,20vw,19rem)] text-center font-bold uppercase leading-[0.7] tracking-[-28px] relative">
+          Front-end Dev
+          <div className="uppercase text-base font-semibold tracking-[30px] gap-[2dvw] flex absolute right-0 -bottom-15 z-10">
             <span>Based</span>
             <span>in</span>
             <span>Ph</span>

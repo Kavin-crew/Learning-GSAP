@@ -3,19 +3,31 @@
 import Image from "next/image";
 import AnimatedHeading from "./AnimatedHeading";
 import HorizontalScrollSections from "./HorizontalScrollSections";
-import GSAPWordHighlightPreview from "./AnimatedWordsHighlight";
+import GSAPWordHighlightPreview, {
+  WordHighlightParagraphs,
+} from "./AnimatedWordsHighlight";
 import profileImg from "@/public/images/kavin-1.png";
 import profile from "@/public/images/kavin-2.png";
 import desktopImage from "@/public/images/desktop.gif";
 
+const paragraphs = [
+  `<green>Value</green> Today, development plays a key role in how users experience a product. I focus on building interfaces that are intuitive, reliable, and impactful—helping businesses connect with users, stand out, and drive real results.`,
+
+  `<green>Approach</green> I value quality over quantity—every detail matters. I take time to understand the problem and focus on what truly adds value, aiming to deliver solutions that create impact and leave clients satisfied.`,
+];
+
 export default function About() {
   return (
     <section className="min-h-screen pt-20 bg-[#101010]">
-      <AnimatedHeading className="font-sans text-8xl font-bold uppercase text-[10dvw] leading-[0.9] tracking-[-15px] text-center text-[#efefef]">
+      <AnimatedHeading className="font-sans text-[clamp(2rem,12dvw+1rem,18rem)] font-bold uppercase leading-[.9] tracking-[-10px] text-center text-[#efefef]">
         About Me
       </AnimatedHeading>
 
-      <GSAPWordHighlightPreview />
+      <WordHighlightParagraphs
+        paragraphs={paragraphs}
+        activeWordCount={10}
+        staggerDelay={0.08}
+      />
 
       <HorizontalScrollSections
         panels={[
@@ -26,7 +38,7 @@ export default function About() {
                 id="about"
                 className="flex relative z-0 h-screen w-full justify-end overflow-hidden"
               >
-                <h2 className="font-sans uppercase font-bold text-[#efefef]  text-[15dvw] leading-[0.8] tracking-[-20px] -ml-3 -mb-3.5 text-theme-black absolute top-0 left-20">
+                <h2 className="font-sans uppercase font-bold text-[#efefef]  text-[clamp(2rem,15dvw+1rem,18rem)] leading-[0.8] tracking-[-20px] -ml-3 -mb-3.5 text-theme-black absolute top-0 left-20">
                   Po
                   <br />
                   rtf
@@ -88,7 +100,7 @@ export default function About() {
                 </div>
 
                 <div className="w-9/12 flex flex-col justify-between h-full">
-                  <p className="text-5xl leading-[1.3] tracking-[-2%] uppercase font-light">
+                  <p className="text-3xl leading-[1.3] tracking-[-2%] uppercase font-light">
                     My interest in web development started with curiosity. I
                     began by experimenting the basics, breaking layouts, fixing
                     them again, and slowly understanding how the web really
@@ -104,7 +116,7 @@ export default function About() {
                       className="w-1/2 max-w-125"
                     />
 
-                    <p className="w-1/2 text-4xl leading-[1.6] tracking-[-2%] uppercase font-light">
+                    <p className="w-1/2 text-xl leading-[1.6] tracking-[-2%] uppercase font-light">
                       Today, I focus on growing as a front-end developer by
                       building real projects, learning modern tools, and
                       following industry best practices.
@@ -115,57 +127,10 @@ export default function About() {
             ),
           },
           {
-            className: "bg-emerald-800 text-white overflow-hidden",
+            className: "bg-[#101010] text-[#efefef] overflow-hidden",
             content: (
-              <article className="flex relative z-0 h-screen w-full justify-end overflow-hidden">
-                <h2 className="font-sans uppercase font-bold text-[#efefef]  text-[15dvw] leading-[0.8] tracking-[-20px] -ml-3 -mb-3.5 text-theme-black absolute top-0 left-0">
-                  Po
-                  <br />
-                  rtf
-                  <br />
-                  olio
-                </h2>
-
-                <div className="content flex w-9/12 h-9/12 mt-auto mb-10">
-                  {/* heading */}
-                  <div className="w-1/3 flex items-end overflow-hidden relative bg-[#A9A9A9] ">
-                    <h2 className="font-sans uppercase font-black text-[#101010] text-[10dvw] leading-[0.7] tracking-[-10px] -ml-4 -mb-3.5 text-theme-black">
-                      Po
-                      <br />
-                      rtf
-                      <br />
-                      olio
-                    </h2>
-
-                    <Image
-                      src={desktopImage}
-                      alt="looping animation of laptop"
-                      unoptimized
-                      width={300}
-                      height={300}
-                    />
-                  </div>
-
-                  {/* image area */}
-                  <div className="image-hero w-2/3 px-10 flex relative overflow-hidden">
-                    <Image
-                      src={profile}
-                      alt="image"
-                      className="absolute bottom-10 left-15"
-                    />
-
-                    <div className="flex flex-col gap-10 text-[#efefef] text-4xl leading-[1.3] tracking-[-2%] uppercase font-light max-w-9/12 relative z-10">
-                      <h2>
-                        Hello <br />
-                        I&apos;m Kavin
-                      </h2>
-                      <p className="ml-auto max-w-6/12 text-3xl leading-[1.6]">
-                        Junior Web Developer with over 4 years of experience
-                        building responsive, impact-driven websites.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              <article className="flex relative z-0 h-screen w-full overflow-hidden gap-50 p-20">
+                Content here...
               </article>
             ),
           },

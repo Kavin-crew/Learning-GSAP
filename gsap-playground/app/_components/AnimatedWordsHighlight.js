@@ -6,11 +6,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const demoParagraphs = [
-  `<green>Value</green> Today, development plays a key role in how users experience a product. I focus on building interfaces that are intuitive, reliable, and impactful—helping businesses connect with users, stand out, and drive real results.`,
+// const demoParagraphs = [
+//   `<green>Value</green> Today, development plays a key role in how users experience a product. I focus on building interfaces that are intuitive, reliable, and impactful—helping businesses connect with users, stand out, and drive real results.`,
 
-  `<green>Approach</green> I value quality over quantity—every detail matters. I take time to understand the problem and focus on what truly adds value, aiming to deliver solutions that create impact and leave clients satisfied.`,
-];
+//   `<green>Approach</green> I value quality over quantity—every detail matters. I take time to understand the problem and focus on what truly adds value, aiming to deliver solutions that create impact and leave clients satisfied.`,
+// ];
 
 function cleanKeywordText(word, color) {
   return word.split(`<${color}>`).join("").split(`</${color}>`).join("");
@@ -196,6 +196,7 @@ export function WordHighlightParagraphs({
   );
 }
 
+// use case
 export default function GSAPWordHighlightPreview() {
   return (
     <section className="min-h-screen bg-[#101010]">

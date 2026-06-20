@@ -18,6 +18,11 @@ const nextConfig = {
         hostname: "assets.codepen.io",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "**",
+      },
     ],
   },
 };

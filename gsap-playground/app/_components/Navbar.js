@@ -50,7 +50,7 @@ export default function Navbar() {
         <div className="flex items-center gap-7">
           <Link
             href="/"
-            className="font-sans text-[2dvw]  uppercase leading-[0.7] tracking-tighter font-bold "
+            className="font-sans text-3xl uppercase leading-[0.7] tracking-tighter font-bold "
           >
             Kavin
             <br />
@@ -59,19 +59,21 @@ export default function Navbar() {
         </div>
 
         <div className="flex h-full items-center">
-          <div className="hidden md:flex gap-30">
+          <div className="hidden md:flex gap-[6dvw]">
             {navItems.map((item, index) => (
               <Link
                 key={index}
                 href={`#${item.toLowerCase()}`}
-                className="nav-hover-btn text-[1dvw] uppercase tracking-wide font-light"
+                className="nav-hover-btn text-base uppercase tracking-wide font-light"
               >
                 {item}
               </Link>
             ))}
           </div>
         </div>
-        <span>button</span>
+        <Link href="/" className="text-xl uppercase tracking-wide">
+          Download CV
+        </Link>
       </nav>
     </header>
   );
