@@ -15,8 +15,9 @@ const splineMono = Spline_Sans_Mono({
 });
 
 export const metadata = {
-  title: "Learning GSAP",
-  description: "code playground for learning GSAP",
+  title: "Kavin A. - Portfolio",
+  description:
+    "Personal Portfolio of Kavin Abregana, a Junior Web Developer with over 4 years of experience building responsive, impact-driven websites.",
 };
 
 export default function RootLayout({ children }) {

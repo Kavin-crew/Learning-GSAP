@@ -78,7 +78,7 @@ export default function HorizontalScrollSections({
     >
       <div
         ref={stripRef}
-        className="flex flex-nowrap will-change-transform h-screen"
+        className="flex flex-nowrap will-change-transform h-screen bg-[#101010]"
       >
         {panels.map((panel, i) => {
           const isNode =

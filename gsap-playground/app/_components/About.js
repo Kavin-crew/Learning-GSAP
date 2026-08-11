@@ -8,7 +8,9 @@ import GSAPWordHighlightPreview, {
 } from "./AnimatedWordsHighlight";
 import profileImg from "@/public/images/kavin-1.png";
 import profile from "@/public/images/kavin-2.png";
+import aboutImg from "@/public/images/about-image.jpg";
 import desktopImage from "@/public/images/desktop.gif";
+import mobileImage from "@/public/images/mobile-phone.gif";
 
 const paragraphs = [
   `<green>Value</green> Today, development plays a key role in how users experience a product. I focus on building interfaces that are intuitive, reliable, and impactful—helping businesses connect with users, stand out, and drive real results.`,
@@ -19,7 +21,7 @@ const paragraphs = [
 export default function About() {
   return (
     <section className="min-h-screen pt-20 bg-[#101010]">
-      <AnimatedHeading className="font-sans text-[clamp(2rem,12dvw+1rem,18rem)] font-bold uppercase leading-[.9] tracking-[-10px] text-center text-[#efefef]">
+      <AnimatedHeading className="font-sans text-[clamp(2rem,12dvw+1rem,13rem)] font-bold uppercase leading-[.9] tracking-[-5px] text-center text-[#efefef]">
         About Me
       </AnimatedHeading>
 
@@ -38,7 +40,7 @@ export default function About() {
                 id="about"
                 className="flex relative z-0 h-screen w-full justify-end overflow-hidden"
               >
-                <h2 className="font-sans uppercase font-bold text-[#efefef]  text-[clamp(2rem,15dvw+1rem,18rem)] leading-[0.8] tracking-[-20px] -ml-3 -mb-3.5 text-theme-black absolute top-0 left-20">
+                <h2 className="font-sans uppercase font-bold text-[#efefef]  text-[clamp(2rem,19dvw+1rem,25rem)] leading-[0.8] tracking-[-20px] -ml-3 -mb-3.5 text-theme-black absolute top-0 left-0">
                   Po
                   <br />
                   rtf
@@ -60,7 +62,7 @@ export default function About() {
 
                   {/* image area */}
                   <div className="image-hero w-full p-10 pb-5 pt-25 flex relative overflow-hidden">
-                    <div className="flex items-end gap-10 text-[#efefef] text-4xl leading-[1.3] tracking-[-2%] uppercase font-light max-w-9/12 relative z-10">
+                    <div className="flex items-end gap-10 text-[#efefef] text-4xl leading-[1.3] tracking-[-2%] uppercase font-light max-w-full relative z-10">
                       <h2 className="relative md:absolute -top-10 left-0">
                         Hello <br />
                         I&apos;m Kavin
@@ -83,7 +85,7 @@ export default function About() {
           {
             className: "bg-[#101010] text-[#efefef] overflow-hidden",
             content: (
-              <article className="flex relative z-0 h-screen w-full overflow-hidden gap-50 p-20">
+              <article className="flex relative z-0 h-screen w-full overflow-hidden gap-50 py-20 max-w-400 mx-auto">
                 <div className="flex flex-col justify-between relative h-full">
                   <Image
                     unoptimized
@@ -116,21 +118,13 @@ export default function About() {
                       className="w-1/2 max-w-125"
                     />
 
-                    <p className="w-1/2 text-xl leading-[1.6] tracking-[-2%] uppercase font-light">
-                      Today, I focus on growing as a front-end developer by
-                      building real projects, learning modern tools, and
-                      following industry best practices.
-                    </p>
+                    <div className="font-sans flex flex-col text-[36px] font-semibold leading-[99%] tracking-[-1px] uppercase">
+                      <span>/ Web DEVELOPMENT</span>
+                      <span>/ Website Conversion</span>
+                      <span>/ WordPress Development</span>
+                    </div>
                   </div>
                 </div>
-              </article>
-            ),
-          },
-          {
-            className: "bg-[#101010] text-[#efefef] overflow-hidden",
-            content: (
-              <article className="flex relative z-0 h-screen w-full overflow-hidden gap-50 p-20">
-                Content here...
               </article>
             ),
           },

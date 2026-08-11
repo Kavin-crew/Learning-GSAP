@@ -145,7 +145,7 @@ export function WordHighlightParagraphs({
         }
 
         .keyword-green::before {
-          background: #fff;
+          background: #a9a9a9;
         }
       `}</style>
 

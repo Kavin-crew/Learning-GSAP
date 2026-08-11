@@ -37,9 +37,9 @@ export default function Hero() {
       </video>
 
       <div className="max-w-600 mx-auto px-8">
-        <h1 className="font-sans text-[clamp(6rem,20vw,19rem)] text-center font-bold uppercase leading-[0.7] tracking-[-28px] relative">
+        <h1 className="font-sans text-[clamp(6rem,19vw,25rem)] text-center font-bold uppercase leading-[0.7] tracking-[-28px] relative">
           Front-end Dev
-          <div className="uppercase text-base font-semibold tracking-[30px] gap-[2dvw] flex absolute right-0 -bottom-15 z-10">
+          <div className="uppercase text-base xl:text-2xl font-semibold tracking-[30px] gap-[2dvw] flex absolute right-0 -bottom-15 z-10">
             <span>Based</span>
             <span>in</span>
             <span>Ph</span>
