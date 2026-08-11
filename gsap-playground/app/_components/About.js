@@ -91,6 +91,7 @@ export default function About() {
                     unoptimized
                     width={400}
                     height={400}
+                    loading="eager"
                     src={desktopImage}
                     alt="looping animation of laptop"
                   />
@@ -115,6 +116,7 @@ export default function About() {
                       alt="Portrait image of Kavin Abregana with his laptop"
                       width={600}
                       height={600}
+                      loading="eager"
                       className="w-1/2 max-w-125"
                     />
 

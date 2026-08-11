@@ -139,15 +139,15 @@ export default function ProjectList({ projects = [] }) {
             onMouseEnter={() => handleEnter(project.image)}
             onMouseLeave={handleLeave}
           >
-            <span className="mr-10 text-base text-white/30 transition-colors duration-300 group-hover:text-[#eb5939]">
+            <span className="font-sans mr-10 text-[20px] text-white/30 transition-colors duration-300 group-hover:text-[#eb5939]">
               {project.index}
             </span>
 
             <div className="grow">
-              <h2 className="m-0 text-[2.5vw] font-extrabold uppercase tracking-[-2%] transition-all duration-300 group-hover:pl-2.5 group-hover:text-transparent group-hover:[-webkit-text-stroke:1px_#fff] max-w-8/12 truncate">
+              <h2 className="font-sans m-0 text-[clamp(2.5rem,13dvw+1rem,3vw)] font-bold uppercase  transition-all duration-300 group-hover:pl-2.5 group-hover:text-transparent group-hover:[-webkit-text-stroke:1px_#fff] max-w-8/12 truncate">
                 {project.title}
               </h2>
-              <p className="mt-1.25 mb-0 text-base text-white/50 uppercase">
+              <p className="mt-1.25 mb-0 text-base font-light text-white/50 uppercase">
                 {project.company} / {project.when}
               </p>
             </div>
@@ -157,7 +157,7 @@ export default function ProjectList({ projects = [] }) {
 
       <div
         ref={revealRef}
-        className="pointer-events-none fixed top-0 left-0 z-10 h-95 w-[320px] scale-[0.8] opacity-0 max-md:hidden"
+        className="pointer-events-none fixed top-0 left-0 z-10 h-110 w-110 scale-[1.1] opacity-0 max-md:hidden"
       >
         <div
           ref={revealImgWrapperRef}
@@ -167,9 +167,9 @@ export default function ProjectList({ projects = [] }) {
             <Image
               src={previewSrc}
               fill
-              sizes="320px"
+              sizes="1020px"
               alt="Project preview"
-              className="h-full w-full object-contain object-center aspect-video"
+              className="h-full w-full object-contain object-top-left aspect-video"
             />
           )}
         </div>

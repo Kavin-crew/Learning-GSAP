@@ -15,7 +15,7 @@ const splineMono = Spline_Sans_Mono({
 });
 
 export const metadata = {
-  title: "Kavin A. - Portfolio",
+  title: "Kavin A. — Impact-Driven Developer",
   description:
     "Personal Portfolio of Kavin Abregana, a Junior Web Developer with over 4 years of experience building responsive, impact-driven websites.",
 };
